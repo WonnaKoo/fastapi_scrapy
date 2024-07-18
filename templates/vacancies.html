@@ -1,70 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Vacancies</title>
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        table, th, td {
-            border: 1px solid black;
-        }
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <title>Job Parser</title>
+    <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
-    <h1>Vacancies</h1>
+    <div class="header">
+        <img src="/static/logo-color.png" alt="Company Logo" class="logo-img">
+    </div>
 
     <form action="/" method="get">
-        <label for="sort_by">Sort by:</label>
-        <select id="sort_by" name="sort_by">
-            <option value="title" {% if sort_by == 'title' %}selected{% endif %}>Title</option>
-            <option value="company" {% if sort_by == 'company' %}selected{% endif %}>Company</option>
-            <option value="location" {% if sort_by == 'location' %}selected{% endif %}>Location</option>
-            <option value="technologies" {% if sort_by == 'technologies' %}selected{% endif %}>Technologies</option>
-            <option value="level" {% if sort_by == 'level' %}selected{% endif %}>Level</option>
-            <option value="eng_lvl" {% if sort_by == 'eng_lvl' %}selected{% endif %}>English Level</option>
-            <!-- Добавьте другие поля для сортировки, если нужно -->
-        </select>
-
-        <label for="sort_order">Sort order:</label>
-        <select id="sort_order" name="sort_order">
-            <option value="asc" {% if sort_order == 'asc' %}selected{% endif %}>Ascending</option>
-            <option value="desc" {% if sort_order == 'desc' %}selected{% endif %}>Descending</option>
-        </select>
-
+        <label for="search_query">Search:</label>
+        <input type="text" id="search_query" name="search_query" value="{{ search_query }}">
         <button type="submit">Apply</button>
     </form>
 
     <table>
         <thead>
             <tr>
-                <th>Title</th>
-                <th>Company</th>
-                <th>Location</th>
-                <th>Technologies</th>
-                <th>Level</th>
-                <th>English Level</th>
-                <th>Original Link</th>
+                <th><a href="?sort_by=title&sort_order={% if sort_by == 'title' and sort_order == 'asc' %}desc{% else %}asc{% endif %}&search_query={{ search_query }}">Title</a></th>
+                <th><a href="?sort_by=company&sort_order={% if sort_by == 'company' and sort_order == 'asc' %}desc{% else %}asc{% endif %}&search_query={{ search_query }}">Company</a></th>
+                <th><a href="?sort_by=location&sort_order={% if sort_by == 'location' and sort_order == 'asc' %}desc{% else %}asc{% endif %}&search_query={{ search_query }}">Location</a></th>
+                <th><a href="?sort_by=technologies&sort_order={% if sort_by == 'technologies' and sort_order == 'asc' %}desc{% else %}asc{% endif %}&search_query={{ search_query }}">Technologies</a></th>
+                <th><a href="?sort_by=price&sort_order={% if sort_by == 'price' and sort_order == 'asc' %}desc{% else %}asc{% endif %}&search_query={{ search_query }}">Salary</a></th>
+                <th><a href="?sort_by=eng_lvl&sort_order={% if sort_by == 'eng_lvl' and sort_order == 'asc' %}desc{% else %}asc{% endif %}&search_query={{ search_query }}">English</a></th>
             </tr>
         </thead>
         <tbody>
             {% for vacancy in vacancies %}
             <tr>
-                <td>{{ vacancy.title }}</td>
+                <td><a href="{{ vacancy.original_link }}" target="_blank">{{ vacancy.title }}</a></td>
                 <td>{{ vacancy.company }}</td>
                 <td>{{ vacancy.location }}</td>
                 <td>{{ vacancy.technologies }}</td>
-                <td>{{ vacancy.level }}</td>
+                <td>{{ vacancy.price }}</td>
                 <td>{{ vacancy.eng_lvl }}</td>
-                <td><a href="{{ vacancy.original_link }}" target="_blank">Link</a></td>
             </tr>
             {% endfor %}
         </tbody>

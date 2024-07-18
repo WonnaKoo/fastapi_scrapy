@@ -6,14 +6,9 @@ class VacancyBase(BaseModel):
     company: str
     location: str = None
     technologies: str
-    level: str = None
+    price: str = None
     eng_lvl: str
     original_link: str
-
-
-class VacancyCreate(VacancyBase):
-    pass
-
 
 class Vacancy(VacancyBase):
     id: int

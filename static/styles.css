@@ -1,0 +1,79 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 20px;
+}
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+.header img {
+    width: 150px;
+    height: auto;
+}
+h1 {
+    color: #333;
+    margin: 0;
+    text-align: center;
+}
+form {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+label, select, input, button {
+    margin: 5px;
+    padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: white;
+}
+label {
+    font-weight: bold;
+}
+select {
+    width: 150px;
+}
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #45a049;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+th {
+    background-color: #f2f2f2;
+}
+td a {
+    color: #007bff;
+    text-decoration: none;
+}
+td a:hover {
+    text-decoration: underline;
+}
+a.sortable-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+a.sortable-link:hover {
+    text-decoration: underline;
+}
